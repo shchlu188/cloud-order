@@ -1,2 +1,5 @@
 server:
-  port: 8101
+  port: 8104
+spring:
+  application:
+    name: order

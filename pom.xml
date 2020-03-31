@@ -10,6 +10,7 @@
     <modules>
         <module>eurekaserver</module>
         <module>configserver</module>
+        <module>order</module>
     </modules>
     <description>Demo project for Spring Boot</description>
     <properties>
