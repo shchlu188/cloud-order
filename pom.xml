@@ -13,7 +13,6 @@
         <module>order</module>
         <module>menu</module>
         <module>client</module>
-        <module>order-common</module>
     </modules>
     <description>Demo project for Spring Boot</description>
     <properties>

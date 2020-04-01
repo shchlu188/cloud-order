@@ -34,7 +34,6 @@ public class MenuController {
     @GetMapping("/list/{index}/{limit}")
     public List<Menu> findAll(@PathVariable("index") int index,
                               @PathVariable("limit") int limit) {
-        Example example = new Example(Menu.class);
         return menuMapper.findAll(index,limit);
     }
 
