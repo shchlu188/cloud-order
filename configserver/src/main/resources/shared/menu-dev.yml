@@ -10,3 +10,7 @@ spring:
       password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/dborder?useSSL=false&useUnicode=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#mybatis
+mybatis:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.scl.menu.domain
