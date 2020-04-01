@@ -22,7 +22,7 @@ public class Menu implements Serializable {
 
     private String flavor;
 
-    private Integer tid;
+    private Type type;
 
     private static final long serialVersionUID = 1L;
 }

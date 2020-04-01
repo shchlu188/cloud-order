@@ -1,8 +1,11 @@
 package com.scl.menu.controller;
 
+import com.scl.constant.ResultState;
 import com.scl.menu.domain.Menu;
 import com.scl.menu.mapper.MenuMapper;
 import com.scl.menu.service.MenuService;
+import com.scl.vo.ResultVo;
+import org.springframework.cloud.context.restart.RestartEndpoint;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,11 +35,11 @@ public class MenuController {
     private MenuService menuService;
 
     @GetMapping("/list/{index}/{limit}")
-    public List<Menu> findAll(@PathVariable("index") int index,
-                              @PathVariable("limit") int limit) {
-        return menuMapper.findAll(index,limit);
-    }
+    public ResultVo findAll(@PathVariable("index") int index,
+                            @PathVariable("limit") int limit) {
 
+        return new ResultVo(ResultState.SUCCESS,menuMapper.countMenu() ,menuMapper.findAll(index, limit));
+    }
 
 
 }

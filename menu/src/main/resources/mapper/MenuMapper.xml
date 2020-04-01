@@ -8,7 +8,9 @@
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="price" jdbcType="DOUBLE" property="price"/>
         <result column="flavor" jdbcType="VARCHAR" property="flavor"/>
-        <result column="tid" jdbcType="INTEGER" property="tid"/>
+        <association property="type" javaType="com.scl.menu.domain.Type"
+                     select="com.scl.menu.mapper.TypeMapper.selectById" column="tid">
+        </association>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated generated on Wed Apr 01 01:49:46 CST 2020.-->
@@ -17,4 +19,8 @@
     <select id="findAll" resultMap="BaseResultMap">
     select id, `name`, price, flavor, tid from t_menu limit #{param1},#{param2};
   </select>
+    <select id="countMenu" resultType="Long">
+        select count(1) from  t_menu;
+
+    </select>
 </mapper>

@@ -2,10 +2,10 @@ package com.scl.client.controller;
 
 import com.scl.client.domain.Menu;
 import com.scl.client.service.MenuService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.scl.constant.ResultState;
+import com.scl.vo.ResultVo;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
@@ -19,18 +19,23 @@ import java.util.List;
  * @create: 2020/4/1
  * Description:
  */
-@RestController
+@Controller
 @RequestMapping("/client")
 public class ClientHandler {
     @Resource
     private MenuService menuService;
-    @GetMapping("/list/{index}/{limit}")
-    public List<Menu> listAll(@PathVariable("index") @NotBlank int index,
-                              @PathVariable("limit") @NotBlank int limit){
-        if (limit < 1){
-            throw new IllegalArgumentException("总条数不能为负数");
-        }
+    @GetMapping("/list")
+    @ResponseBody
+    public ResultVo<List<Menu>> listAll(@RequestParam("page") @NotBlank int page,
+                            @RequestParam(value = "limit",defaultValue = "5") @NotBlank int limit){
+        int index = (page-1)*limit;
         return menuService.findAll(index,limit);
+    }
+
+
+    @GetMapping("/{location}")
+    public String redirect(@PathVariable("location") String location){
+        return location;
     }
 
 }

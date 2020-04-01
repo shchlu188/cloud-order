@@ -1,6 +1,7 @@
 package com.scl.client.service;
 
 import com.scl.client.domain.Menu;
+import com.scl.vo.ResultVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,6 @@ import java.util.List;
 @FeignClient(value="menu")
 public interface MenuService {
     @GetMapping("/menu/list/{index}/{limit}")
-    public List<Menu> findAll(@PathVariable("index") int index,
-                              @PathVariable("limit") int limit);
+    public ResultVo<List<Menu>> findAll(@PathVariable("index") int index,
+                            @PathVariable("limit") int limit);
 }

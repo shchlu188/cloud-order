@@ -20,4 +20,10 @@ public interface MenuMapper extends Mapper<Menu> {
      * @return
      */
     List<Menu> findAll(int index, int limit);
+
+    /**
+     * 查询总记录数
+     * @return
+     */
+    Long countMenu();
 }
